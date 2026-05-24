@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TechGetAfrica — Marketing Website
 
-## Getting Started
+A production-ready marketing site for **TechGetAfrica** — an EdTech company with three equally-weighted business lines: a software agency, a tech recruitment business, and EdTech training programs.
 
-First, run the development server:
+Stack: **Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · Framer Motion · lucide-react · react-hook-form · zod**.
+
+---
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build   # Production build (Turbopack)
+npm run start   # Run the production server locally
+npm run lint    # ESLint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Requires Node.js **20.9+**.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Project structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+  app/
+    layout.tsx           # Root layout — fonts, metadata, Navbar + Footer
+    page.tsx             # Home page
+    globals.css          # Tailwind v4 @theme tokens + base styles
+    sitemap.ts           # Auto-generated sitemap
+    robots.ts            # Robots configuration
+    (each page lives in its own folder)
+  components/
+    ui/                  # Design system primitives (Button, Card, Section, Container, Badge, Input, Tag, Eyebrow, Logo, PlaceholderImage, Divider)
+    layout/              # Navbar + Footer
+    motion/              # Reveal + Stagger (Framer Motion wrappers)
+    home/                # Home page sections (Hero, Pillars, FeaturedWork, …)
+  data/                  # Typed mock data — edit these to change site content
+  lib/
+    site.ts              # Site config (name, nav, social, contact)
+    types.ts             # Shared TypeScript types
+    utils.ts             # cn(), formatDate(), readingTime(), slugify()
+public/                  # Static assets (favicon lives in src/app)
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Where to edit content
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+All copy and content lives in **`src/data/`** as typed TypeScript — easy to edit, autocompleted, and validated at build time.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| File | What it controls |
+| --- | --- |
+| `src/data/services.ts` | Agency services + the "how we work" process |
+| `src/data/portfolio.ts` | Portfolio case studies (with detail-page content) |
+| `src/data/programs.ts` | EdTech courses & bootcamps |
+| `src/data/jobs.ts` | Jobs board listings |
+| `src/data/posts.ts` | Blog posts (excerpt + Markdown-friendly body) |
+| `src/data/team.ts` | Team members + company values |
+| `src/data/testimonials.ts` | Customer / learner / candidate quotes |
+| `src/data/stats.ts` | Hero stats + trust-bar logo placeholders |
+| `src/lib/site.ts` | Company name, tagline, email, social links, primary & footer nav |
+
+---
+
+## Design system
+
+The visual language is defined in **`src/app/globals.css`** via Tailwind v4's `@theme` block:
+
+- **Palette** — warm off-white canvas (`#FAF8F3`), deep petrol blue primary (`#0B4F6C`), warm terracotta accent (`#C2611C`), near-black ink.
+- **Type** — `Inter Tight` (display) + `Inter` (body), loaded via `next/font/google` in `src/app/layout.tsx`.
+- **Tokens** — colors, radius, shadows, container widths all defined as CSS variables and exposed as Tailwind utilities (e.g. `bg-primary`, `text-ink`, `ring-border`, `shadow-card`).
+
+To re-skin the site, edit the `@theme` block in `globals.css` — no Tailwind config file needed.
+
+---
+
+## Contact form
+
+The contact form on `/contact` posts to `app/api/contact/route.ts`, which validates input with **zod** and returns JSON. Email sending is stubbed with a clear `TODO` comment — drop in your provider of choice (Resend, Postmark, SendGrid, etc.).
+
+---
+
+## Accessibility
+
+- Semantic HTML, ARIA labels on interactive elements, alt text and `role="img"` on graphical placeholders.
+- Visible `:focus-visible` outline using the brand primary.
+- `prefers-reduced-motion` respected by all Framer Motion components.
+- Skip-to-content link in the root layout.
+- WCAG AA color contrast across the site.
+
+---
+
+## SEO
+
+- Per-page `metadata` exports using Next.js's Metadata API.
+- Open Graph + Twitter cards configured in the root layout.
+- `sitemap.xml` and `robots.txt` generated by `src/app/sitemap.ts` and `src/app/robots.ts`.
+- Update `siteConfig.url` in `src/lib/site.ts` to your production domain.
