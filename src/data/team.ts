@@ -3,17 +3,17 @@ import { HeartHandshake, Compass, GraduationCap, Hammer, Sparkles } from "lucide
 
 export const team: TeamMember[] = [
   {
-    name: "Amara Okafor",
+    name: "Reagan Enoch",
     role: "Co-founder & CEO",
-    bio: "Built and sold a fintech in Lagos before starting TechGetAfrica. Spends most of her time with customers and candidates.",
-    location: "Lagos",
+    bio: "Worked as a professional in the tech industry before starting TechGetAfrica.",
+    location: "Nairobi",
     hue: "blue",
   },
   {
-    name: "Kwame Adusei",
+    name: "Barbara Were Oluoch",
     role: "Co-founder & COO",
-    bio: "Ran operations for a 600-person engineering org before joining the founding team. Allergic to vanity metrics.",
-    location: "Accra",
+    bio: "Worked as a professional therapist before joining TechGetAfrica.",
+    location: "Nairobi",
     hue: "green",
   },
   {
@@ -27,14 +27,14 @@ export const team: TeamMember[] = [
     name: "Tendai Mhlanga",
     role: "Director of Programs",
     bio: "Built and ran the curriculum from cohort one. Will out-argue you on the case for cohort-based learning.",
-    location: "Harare",
+    location: "Nairobi",
     hue: "violet",
   },
   {
     name: "Kofi Asante",
     role: "Principal Engineer",
     bio: "Reluctant TypeScript fan, enthusiastic SQL one. Leads the architecture review board across our client work.",
-    location: "Accra",
+    location: "Nairobi",
     hue: "slate",
   },
   {
@@ -55,7 +55,7 @@ export const team: TeamMember[] = [
     name: "Mohamed Diop",
     role: "Engineering Manager",
     bio: "Manages the platform pod. Previously led engineering at a Senegal-based logistics startup.",
-    location: "Dakar",
+    location: "Nairobi",
     hue: "green",
   },
 ];

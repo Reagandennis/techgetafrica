@@ -31,7 +31,7 @@ const milestones = [
   {
     year: "2022",
     title: "We started, quietly",
-    body: "Amara and Kwame left their previous jobs and started TGA with one bootcamp cohort of twelve learners in Lagos. The first hire was a recruiter, not a designer.",
+    body: "Reagan Enoch left his previous job and started TGA with one bootcamp cohort of twelve learners in Nairobi. The first hire was a recruiter, not a designer.",
   },
   {
     year: "2023",
